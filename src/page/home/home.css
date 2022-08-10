@@ -1,0 +1,9 @@
+.serviceBloc__container{
+    display: flex;
+}
+
+@media screen and (min-width:920px) {
+    .serviceBloc__container{
+        flex-direction: row;
+    }
+}
