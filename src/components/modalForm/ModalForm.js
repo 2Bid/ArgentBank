@@ -1,5 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import instance from '../../services/http-config'
 import login from '../../services/login'
+import { saveToken } from '../../services/storage'
+import { dataUser } from '../../services/user'
 
 import "./modalForm.css"
 
@@ -21,19 +25,15 @@ export default function ModalForm() {
           setUserRemember(e.target.checked)
      }
 
+     const navigate = useNavigate()
+
      const submitForm =(e)=>{
           e.preventDefault()
           login(userMail, userPass)
-          .then(data=>persistToken(data.data.body.token))
-          
-     }
-
-     const persistToken = (token) => {
-          console.log(token)
-          userRemember ?
-          window.localStorage.setItem('Local Token',token)
-          :
-          window.sessionStorage.setItem('Session Token',token)
+          .then(data=>{
+               saveToken(data.data.body.token, userRemember)
+               navigate('/user')
+          })
      }
 
   return (

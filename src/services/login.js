@@ -1,7 +1,7 @@
-import axios from "axios";
+import instance from "./http-config"
 
 export default function login(userMail, userPass){
-    return axios.post('http://localhost:3001/api/v1/user/login',
+    return instance.post('user/login',
     {
         email : userMail,
         password : userPass
