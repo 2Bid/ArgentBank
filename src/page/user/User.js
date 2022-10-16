@@ -1,26 +1,50 @@
 import React, { useEffect, useState } from 'react'
-import { dataUser, modifyDataUser } from '../../services/user'
+import { useDispatch , useSelector} from 'react-redux'
+import EditName from '../../components/editName/EditName'
+import TransactBloc from '../../components/transactBloc/TransactBloc'
+import { setUserData } from '../../features/user/userSlice'
+import { dataUser } from '../../services/user'
+
+import './user.css'
 
 export default function User() {
 
-  const [firstname, setFirstName ] = useState("")
-  const [lastname, setLastName ] = useState("")
+  const dispatch = useDispatch()
+  const user = useSelector((state)=>state.user.userData)
 
   useEffect(()=>{
     dataUser()
     .then((response)=>{
-      setFirstName(response.data.body.firstName)
-      setLastName(response.data.body.lastName)
+      dispatch(setUserData(response.data.body))
     })
   },[])
 
-  useEffect(()=>{
-    setTimeout(()=>{
-      modifyDataUser('test', 'ok')
-    },5000)
-  },[])
+  const [isEditOpen, setIsEditOpen] = useState(false)
+
+  function isUserEditing() {
+    if(isEditOpen){
+      return <EditName/>
+    }
+    else{
+      return(
+        <>
+          <h1 className='user__text'>Welcome back<br/>{user.firstName} {user.lastName}</h1>
+          <button className='user__button--edit' onClick={()=>setIsEditOpen(true)}>Edit Name</button>
+        </>
+      )
+    }
+  }
 
   return (
-    <div>{firstname} {lastname}</div>
+    <div className='user__page'>
+      <div className='user__header'>
+        {
+          isUserEditing()
+        }
+      </div>
+
+      <TransactBloc />
+      <TransactBloc />
+    </div>
   )
 }

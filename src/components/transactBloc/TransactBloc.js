@@ -1,5 +1,7 @@
 import React from 'react'
 
+import "./transactBloc.css"
+
 export default function TransactBloc() {
   return (
      <section className="TransactBloc">
