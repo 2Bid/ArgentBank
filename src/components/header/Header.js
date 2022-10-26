@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import "./header.css"
 import Logo from "../../images/argentBankLogo.png"
-import { deleteUserToken } from '../../features/user/userSlice';
+import { deleteUserToken } from '../../features/userSlice';
 import { deleteToken } from '../../services/storage'
 
 export default function Header() {

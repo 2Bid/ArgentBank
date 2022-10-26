@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { updateToken } from '../../features/user/userSlice'
+import { updateToken } from '../../features/userSlice'
 import login from '../../services/login'
 import { saveToken } from '../../services/storage'
 

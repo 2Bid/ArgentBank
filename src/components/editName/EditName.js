@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUserData } from '../../features/user/userSlice'
+import { setUserData } from '../../features/userSlice'
 import { modifyDataUser } from '../../services/user'
 import "./editName.css"
 
