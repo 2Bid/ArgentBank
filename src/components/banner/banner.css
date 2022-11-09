@@ -16,6 +16,16 @@
      margin: 0 auto;
 }
 
+.banner__content h2{
+     font-size: 1rem;
+     margin: 0;
+}
+
+.banner__content p{
+     font-size: 0.9rem;
+     margin-bottom: 0;
+}
+
 @media screen and (min-width:920px) {
      .banner{
           height: 400px;
@@ -28,5 +38,13 @@
           right: 50px;
           width: 300px;
           margin: 2rem;
+     }
+
+     .banner__content h2{
+          font-size: 1.5rem;
+     }
+     
+     .banner__content p{
+          font-size: 1.2rem;
      }
 }

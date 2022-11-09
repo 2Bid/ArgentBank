@@ -23,6 +23,11 @@
      display: flex;
 }
 
+.input-error{
+     color: red;
+     font-size: 13px;
+}
+
 .sign-in-button {
      display: block;
      width: 100%;

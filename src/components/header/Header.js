@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import "./header.css"
 import Logo from "../../images/argentBankLogo.png"
-import { deleteUserToken } from '../../features/user/userSlice';
+import { deleteUserToken } from '../../features/userSlice';
 import { deleteToken } from '../../services/storage'
 
 export default function Header() {
@@ -22,19 +22,16 @@ export default function Header() {
       {
         !token ? 
         <div className='log__container'>
-          <i class="fa fa-user-circle"></i>
-          <Link to="/log" className='user__log'>Sign in</Link>
+          <Link to="/log" className='user__log'><i className="fa fa-user-circle"></i> Sign in</Link>
         </div>
          :
         <div className='log__container'>
           <div className='log__container'>
-          <i class="fa fa-user-circle"></i>
-          <Link to="/user" className="user__log">{user.firstName}</Link>
-         </div>
+            <Link to="/user" className="user__log"><i className="fa fa-user-circle"></i> {user.firstName}</Link>
+          </div>
 
           <div className='log__container'>
-            <i class="fa fa-sign-out"></i>
-            <Link to="/" onClick={()=>{deleteToken(token); dispatch(deleteUserToken())}} className="user__log">Log out</Link>
+            <Link to="/" onClick={()=>{deleteToken(token); dispatch(deleteUserToken())}} className="user__log"><i className="fa fa-sign-out"></i> Sign out</Link>
           </div>
         </div>
       }

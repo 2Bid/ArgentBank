@@ -25,6 +25,7 @@
 
 .editModal__input-container{
     display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -58,4 +59,10 @@
     border-color: #00bc77;
     background-color: #00bc77;
     color: #fff;
+}
+
+@media screen and (min-width:920px) {
+    .editModal__input-container{
+        flex-direction: row;
+    }
 }

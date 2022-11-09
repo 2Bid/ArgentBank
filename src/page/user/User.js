@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch , useSelector} from 'react-redux'
 import EditName from '../../components/editName/EditName'
 import TransactBloc from '../../components/transactBloc/TransactBloc'
-import { setUserData } from '../../features/user/userSlice'
+import { setUserData } from '../../features/userSlice'
 import { dataUser } from '../../services/user'
 
 import './user.css'
@@ -23,7 +23,7 @@ export default function User() {
 
   function isUserEditing() {
     if(isEditOpen){
-      return <EditName/>
+      return <EditName open={isEditOpen} setOpen={setIsEditOpen}/>
     }
     else{
       return(
