@@ -45,6 +45,7 @@ export default function User() {
 
       <TransactBloc />
       <TransactBloc />
+      <TransactBloc />
     </div>
   )
 }
