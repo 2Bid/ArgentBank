@@ -1,46 +1,24 @@
-# Getting Started with Create React App and Redux
+# ArgentBank #
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Projet numéro 13 de ma formation OpenClassrooms ##
 
-## Available Scripts
+Ressources :</br>
+[le HTML statique et le CSS](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/designs)</br>
+[les différentes attentes concernant le projet](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/.github/ISSUE_TEMPLATE)</br>
+[le backend](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)</br>
 
-In the project directory, you can run:
+## Phase 1 : Authentification des utilisateurs ##
 
-### `npm start`
+L'utilisateur peut visiter la page d'accueil</br>
+L'utilisateur peut se connecter au système</br>
+L'utilisateur peut se déconnecter du système</br>
+L'utilisateur ne peut voir les informations relatives à son propre profil qu'après s'être connecté avec succès</br>
+L'utilisateur peut modifier le profil et conserver les données dans la base de données.</br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Phase 2 : Transactions ##
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Création de endpoints permettant de :
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Visualiser toutes leurs transactions pour le mois en cours</br>
+Visualiser les détails d'une transaction dans une autre vue</br>
+Ajouter, modifier ou supprimer des informations sur une transaction.</br>
