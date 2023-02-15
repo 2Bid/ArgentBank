@@ -110,12 +110,12 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /transact:
+  /Transaction:
       get:
         tags:
-          - Transact Module
-        summary: Transact
-        description: API for load Transact
+          - Transaction Module
+        summary: Transaction
+        description: API for load Transaction
         parameters:
           - in: header
             name: Authorization
@@ -125,20 +125,18 @@ paths:
           - application/json
         responses:
           '200':
-            description: Transacts has been load Successfully
+            description: Transactions has been load Successfully
             schema:
-              $ref: '#/definitions/TransactResponse'
-          '400':
-            description: Invalid Fields
+              $ref: '#/definitions/TransactionResponse'
           '500':
             description: Internal Server Error
       post:
         security:
           - Bearer: []
         tags:
-          - Transact Module
-        summary: Transact Detail API
-        description: API for create a transaction
+          - Transaction Module
+        summary: Transaction Detail API
+        description: API for create a Transaction
         parameters:
           - in: header
             name: Authorization
@@ -146,29 +144,29 @@ paths:
             required: true
           - in: body
             name: body
-            description: Transact Payload
+            description: Transaction Payload
             required: true
             schema:
-              $ref: '#/definitions/TransactCreate'
+              $ref: '#/definitions/TransactionCreate'
         produces:
           - application/json
         responses:
           '200':
             description: Transaction detail retrieved successully
             schema:
-              $ref: '#/definitions/TransactDetail'
+              $ref: '#/definitions/TransactionDetail'
           '400':
             description: Invalid Fields
           '500':
             description: Internal Server Error
-  /transact/{id}:
+  /Transaction/{id}:
     get:
       security:
         - Bearer: []
       tags:
-        - Transact Module
-      summary: Transact Detail API
-      description: API for fetching a transaction detail
+        - Transaction Module
+      summary: Transaction Detail API
+      description: API for fetching a Transaction detail
       parameters:
         - in: header
           name: Authorization
@@ -180,18 +178,16 @@ paths:
         '200':
           description: Transaction detail retrieved successully
           schema:
-            $ref: '#/definitions/TransactDetail'
-        '400':
-          description: Invalid Fields
+            $ref: '#/definitions/TransactionDetail'
         '500':
           description: Internal Server Error    
     put:
       security:
         - Bearer: []
       tags:
-        - Transact Module
-      summary: Transact Detail API
-      description: API for editing a transaction
+        - Transaction Module
+      summary: Transaction Detail API
+      description: API for editing a Transaction
       parameters:
         - in: header
           name: Authorization
@@ -199,17 +195,17 @@ paths:
           required: true
         - in: body
           name: body
-          description: Update transaction detail attributes
+          description: Update Transaction detail attributes
           required: true
           schema:
-            $ref: '#/definitions/TransactCreate'
+            $ref: '#/definitions/TransactionCreate'
       produces:
         - application/json
       responses:
         '200':
           description: Transaction has been editing successully
           schema:
-            $ref: '#/definitions/TransactDetailAPIResponse'
+            $ref: '#/definitions/TransactionDetailAPIResponse'            
         '400':
           description: Invalid Fields
         '500':
@@ -218,9 +214,9 @@ paths:
       security:
         - Bearer: []
       tags:
-        - Transact Module
-      summary: Transact Detail API
-      description: API for deleting a transaction
+        - Transaction Module
+      summary: Transaction Detail API
+      description: API for deleting a Transaction
       parameters:
         - in: header
           name: Authorization
@@ -232,9 +228,7 @@ paths:
         '200':
           description: Transaction has been delete successully
           schema:
-            $ref: '#/definitions/TransactDetailDeleteResponse'
-        '400':
-          description: Invalid Fields
+            $ref: '#/definitions/TransactionDetailDeleteResponse'
         '500':
           description: Internal Server Error
 securityDefinitions:
@@ -291,80 +285,80 @@ definitions:
         type: string
       lastName:
         type: string
-  Transact:
+  Transaction:
     properties:
       id: 
         type: string
-        description: Transact id
+        description: Transaction id
       status:
         type: string
-        description: Transact status code
+        description: Transaction status code
       description: 
         type: string
-        description: Transact description
+        description: Transaction description
       amount: 
         type: number
-        description: Transact amount
+        description: Transaction amount
       balance: 
         type: number
-        description: Transact balance
+        description: Transaction balance
       date: 
         type: string
-        description: Transact date
-  TransactResponse:
+        description: Transaction date
+  TransactionResponse:
     type: array
     items:
-        $ref: '#/definitions/TransactDetail'
-  TransactCreate:
+        $ref: '#/definitions/TransactionDetail'
+  TransactionCreate:
     properties:
       status:
         type: string
-        description: Transact status code
+        description: Transaction status code
       description: 
         type: string
-        description: Transact description
+        description: Transaction description
       amount: 
         type: number
-        description: Transact amount
+        description: Transaction amount
       balance: 
         type: number
-        description: Transact balance
-  TransactDetail:
+        description: Transaction balance
+  TransactionDetail:
     properties:
       id: 
         type: string
-        description: Transact id
+        description: Transaction id
       status:
         type: string
-        description: Transact status code
+        description: Transaction status code
       description: 
         type: string
-        description: Transact description
+        description: Transaction description
       amount: 
         type: number
-        description: Transact amount
+        description: Transaction amount
       balance: 
         type: number
-        description: Transact balance
+        description: Transaction balance
       date: 
         type: string
-        description: Transact date
-  TransactDetailResponse:
+        description: Transaction date
+  TransactionDetailResponse:
     type: object
     properties:
       id:
         type: string
-  TransactDetailAPIResponse:
+  TransactionDetailAPIResponse:
     type: object
     properties:
       message:
         type: string
-  TransactDetailDelete:
+  TransactionDetailDelete:
     type: object
     properties:
       id:
         type: string
-  TransactDetailDeleteResponse:
+  TransactionDetailDeleteResponse:
     type: object
     properties:
       message:

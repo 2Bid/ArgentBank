@@ -2,7 +2,6 @@ import React from 'react'
 
 import "./banner.css"
 
-
 export default function Banner(props) {
   return (
     <div className='banner' style={{ backgroundImage:`url(${props.img})` }}>

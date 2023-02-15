@@ -21,25 +21,15 @@ export default function User() {
 
   const [isEditOpen, setIsEditOpen] = useState(false)
 
-  function isUserEditing() {
-    if(isEditOpen){
-      return <EditName open={isEditOpen} setOpen={setIsEditOpen}/>
-    }
-    else{
-      return(
-        <>
-          <h1 className='user__text'>Welcome back<br/>{user.firstName} {user.lastName}</h1>
-          <button className='user__button--edit' onClick={()=>setIsEditOpen(true)}>Edit Name</button>
-        </>
-      )
-    }
-  }
-
   return (
     <div className='user__page'>
       <div className='user__header'>
         {
-          isUserEditing()
+          isEditOpen ? <EditName open={isEditOpen} setOpen={setIsEditOpen}/> : 
+          <>
+          <h1 className='user__text'>Welcome back<br/>{user.firstName} {user.lastName}</h1>
+          <button className='user__button--edit' onClick={()=>setIsEditOpen(true)}>Edit Name</button>
+        </>
         }
       </div>
 

@@ -6,7 +6,7 @@ export default function CheckUser(props) {
 
     let token = getToken()
 
-    if(props.loged === true){
+    if(props.loged){
         if(token){
             return props.children
         }
@@ -14,8 +14,7 @@ export default function CheckUser(props) {
             return <Navigate to="/log"/>
         }
     }
-    
-    if(props.loged === false){
+    else{
         if(!token){
             return props.children
         }

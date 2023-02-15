@@ -39,13 +39,11 @@ export default function EditModal({setOpen}) {
             <form className='editModal__form'>
                 <div className='editModal__input-container'>
                    <div className='editModal__input'>
-                        <label htmlFor="fname">Nom</label>
-                        <input id='fname' value={fname} placeholder={user.firstName} onChange={handleSetFname}></input>
+                        <input id='fname' value={fname} placeholder={user.lastName || "Last Name"} onChange={handleSetFname}></input>
                    </div>
 
                     <div className='editModal__input'>
-                        <label htmlFor="name">Prénom</label>
-                        <input id='name' value={name} placeholder={user.lastName} onChange={handleSetName}></input>
+                        <input id='name' value={name} placeholder={user.firstName || "First Name"} onChange={handleSetName}></input>
                     </div>
                 </div>
 

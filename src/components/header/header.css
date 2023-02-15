@@ -2,12 +2,12 @@ header{
      display: flex;
      justify-content: space-between;
      align-items: center;
-     padding: 5px 20px;
+     padding: 5px 10px;
 }
 
 .logo{
      max-width: 100%;
-     width: 200px;
+     width: 170px;
 }
 
 .log__container{
@@ -29,5 +29,21 @@ header{
 @media (hover:hover) {
      .log__container a:hover{
           text-decoration: underline;
+     }
+}
+
+@media screen and (min-width:420px) {
+     header{
+          padding: 5px 20px;
+     }
+     
+     .logo {
+          width: 190px;
+     }
+}
+
+@media screen and (min-width:920px) {
+     .logo {
+          width: 200px;
      }
 }
