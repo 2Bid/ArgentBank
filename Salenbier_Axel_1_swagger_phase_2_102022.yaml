@@ -31,6 +31,8 @@ paths:
             $ref: '#/definitions/LoginResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Invalid Token
         '500':
           description: Internal Server Error
   /user/signup:
@@ -55,6 +57,8 @@ paths:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Invalid Token
         '500':
           description: Internal Server Error
   /user/profile:
@@ -67,6 +71,7 @@ paths:
       description: API for fetching a user profile
       parameters:
         - in: header
+          type : string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -79,6 +84,8 @@ paths:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Invalid Token
         '500':
           description: Internal Server Error
     put:
@@ -90,6 +97,7 @@ paths:
       description: API for updating a user profile
       parameters:
         - in: header
+          type : string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -108,16 +116,19 @@ paths:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Invalid Token
         '500':
           description: Internal Server Error
-  /transact:
+  /transactions:
       get:
         tags:
-          - Transact Module
-        summary: Transact
-        description: API for load Transact
+          - Transactions Module
+        summary: Transactions
+        description: API for load all transactions for current month
         parameters:
           - in: header
+            type : string
             name: Authorization
             description: Attach Bearer JWT token
             required: true
@@ -125,91 +136,78 @@ paths:
           - application/json
         responses:
           '200':
-            description: Transacts has been load Successfully
+            description: Transactions has been load Successfully
             schema:
-              $ref: '#/definitions/TransactResponse'
+              $ref: '#/definitions/TransactionsResponse'
           '400':
             description: Invalid Fields
+          '401':
+            description: Invalid Token
           '500':
             description: Internal Server Error
-      post:
-        security:
-          - Bearer: []
-        tags:
-          - Transact Module
-        summary: Transact Detail API
-        description: API for create a transaction
-        parameters:
-          - in: header
-            name: Authorization
-            description: Attach Bearer JWT token
-            required: true
-          - in: body
-            name: body
-            description: Transact Payload
-            required: true
-            schema:
-              $ref: '#/definitions/TransactCreate'
-        produces:
-          - application/json
-        responses:
-          '200':
-            description: Transaction detail retrieved successully
-            schema:
-              $ref: '#/definitions/TransactDetail'
-          '400':
-            description: Invalid Fields
-          '500':
-            description: Internal Server Error
-  /transact/{id}:
+  /transaction/{id}:
     get:
       security:
         - Bearer: []
       tags:
-        - Transact Module
-      summary: Transact Detail API
+        - Transactions Module
+      summary: Transaction Detail API
       description: API for fetching a transaction detail
       parameters:
         - in: header
+          type : string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+        - name: id
+          in: path
+          description: Id of transaction
+          required: true
+          type: string
       produces:
         - application/json
       responses:
         '200':
           description: Transaction detail retrieved successully
           schema:
-            $ref: '#/definitions/TransactDetail'
+            $ref: '#/definitions/TransactionDetail'
         '400':
           description: Invalid Fields
+        '401':
+          description: Invalid Token
         '500':
           description: Internal Server Error    
     put:
       security:
         - Bearer: []
       tags:
-        - Transact Module
-      summary: Transact Detail API
+        - Transactions Module
+      summary: Transaction Detail API
       description: API for editing a transaction
       parameters:
         - in: header
+          type : string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+        - name: id
+          in: path
+          description: Id of transaction
+          required: true
+          type: string
         - in: body
           name: body
           description: Update transaction detail attributes
           required: true
           schema:
-            $ref: '#/definitions/TransactCreate'
+            $ref: '#/definitions/TransactionEdit'
       produces:
         - application/json
       responses:
         '200':
           description: Transaction has been editing successully
           schema:
-            $ref: '#/definitions/TransactDetailAPIResponse'
+            $ref: '#/definitions/TransactionDetail'
         '400':
           description: Invalid Fields
         '500':
@@ -218,23 +216,31 @@ paths:
       security:
         - Bearer: []
       tags:
-        - Transact Module
-      summary: Transact Detail API
+        - Transactions Module
+      summary: Transaction Detail API
       description: API for deleting a transaction
       parameters:
         - in: header
+          type : string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+        - name: id
+          in: path
+          description: Id of transaction
+          required: true
+          type: string
       produces:
         - application/json
       responses:
         '200':
           description: Transaction has been delete successully
           schema:
-            $ref: '#/definitions/TransactDetailDeleteResponse'
+            $ref: '#/definitions/TransactionDeleteResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Invalid Token
         '500':
           description: Internal Server Error
 securityDefinitions:
@@ -291,80 +297,39 @@ definitions:
         type: string
       lastName:
         type: string
-  Transact:
-    properties:
-      id: 
-        type: string
-        description: Transact id
-      status:
-        type: string
-        description: Transact status code
-      description: 
-        type: string
-        description: Transact description
-      amount: 
-        type: number
-        description: Transact amount
-      balance: 
-        type: number
-        description: Transact balance
-      date: 
-        type: string
-        description: Transact date
-  TransactResponse:
+  TransactionsResponse:
     type: array
     items:
-        $ref: '#/definitions/TransactDetail'
-  TransactCreate:
-    properties:
-      status:
-        type: string
-        description: Transact status code
-      description: 
-        type: string
-        description: Transact description
-      amount: 
-        type: number
-        description: Transact amount
-      balance: 
-        type: number
-        description: Transact balance
-  TransactDetail:
+      $ref: '#/definitions/TransactionDetail'
+  TransactionDetail:
     properties:
       id: 
         type: string
-        description: Transact id
+        description: Transaction id
       status:
         type: string
-        description: Transact status code
+        description: Transaction status code
       description: 
         type: string
-        description: Transact description
+        description: Transaction description
       amount: 
         type: number
-        description: Transact amount
+        description: Transaction amount
       balance: 
         type: number
-        description: Transact balance
+        description: Transaction balance
       date: 
         type: string
-        description: Transact date
-  TransactDetailResponse:
-    type: object
+        description: Transaction date
+  TransactionEdit:
     properties:
-      id:
+      status:
         type: string
-  TransactDetailAPIResponse:
-    type: object
-    properties:
-      message:
+        description: Transaction status code
+      description: 
         type: string
-  TransactDetailDelete:
-    type: object
-    properties:
-      id:
-        type: string
-  TransactDetailDeleteResponse:
+        description: Transaction description
+  TransactionDeleteResponse:
     type: object
     properties:
       message:
